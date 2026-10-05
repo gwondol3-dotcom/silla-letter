@@ -132,7 +132,7 @@
       </div>
       <div class="stage-nav">
         <button class="btn ghost" data-act="prev">◀ 이전</button>
-        <button class="btn big" id="btnNext" data-act="next">${view.step === s.steps.length - 1 ? '봉인 풀기 🔓' : '다음 ▶'}</button>
+        <button class="btn big" id="btnNext" data-act="next" ${state.solved[sid] ? '' : 'disabled title="문제를 해결해야 넘어갈 수 있어요"'}>${view.step === s.steps.length - 1 ? '봉인 풀기 🔓' : '다음 ▶'}</button>
       </div>
     </section>`;
     const body = $('#body'), fb = $('#fb');
@@ -140,7 +140,7 @@
       if (!state.solved[sid]) { state.solved[sid] = 1; save(); $('#starCount').textContent = starTotal(); }
       fb.hidden = false; fb.className = 'fb good';
       fb.innerHTML = `<span class="stamp">⭐ 해결!</span> ${st.explain || ''}${extraHtml || ''}`;
-      $('#btnNext').classList.add('glow');
+      $('#btnNext').disabled = false; $('#btnNext').removeAttribute('title'); $('#btnNext').classList.add('glow');
       $$('.dots i')[view.step].classList.add('ok');
       sfx.ok();
     };
@@ -377,6 +377,7 @@
     const a = t.dataset.act;
     if (a === 'close') modal.hidden = true;
     if (a === 'letter') openModal('<h3>📜 지금까지 복원된 편지</h3>' + letterHTML(false));
+    if (a === 'next' && !state.solved[`${view.i}-${view.step}`]) return;
     if (a === 'next') view.step < SEALS[view.i].steps.length - 1 ? go({ name: 'seal', i: view.i, step: view.step + 1 }) : go({ name: 'unseal', i: view.i });
     if (a === 'prev') view.step > 0 ? go({ name: 'seal', i: view.i, step: view.step - 1 }) : go({ name: 'hub' });
   });
