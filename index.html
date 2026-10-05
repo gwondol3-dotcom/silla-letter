@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>천 년 전 편지의 비밀 | 통일신라의 발전과 사람들의 생활 모습</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="stars" aria-hidden="true"></div>
+
+<header class="topbar" id="topbar" hidden>
+  <button class="tb-home" id="btnHome" title="봉인 지도">🗺️ <span>봉인 지도</span></button>
+  <div class="seals-mini" id="sealsMini" aria-label="진행 상황"></div>
+  <div class="tb-tools">
+    <span class="starcount" title="모은 별">⭐ <b id="starCount">0</b></span>
+    <button id="btnLetter" title="편지 보기">📜 <span>편지</span></button>
+    <button id="btnPick" title="발표자 뽑기">🎲 <span>뽑기</span></button>
+    <button id="btnSound" title="소리 켜기/끄기">🔔</button>
+    <button id="btnFull" title="전체 화면">⛶</button>
+    <button id="btnSet" title="설정">⚙️</button>
+  </div>
+</header>
+
+<main id="app"></main>
+
+<div class="modal" id="modal" hidden>
+  <div class="modal-box" id="modalBox"></div>
+</div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
